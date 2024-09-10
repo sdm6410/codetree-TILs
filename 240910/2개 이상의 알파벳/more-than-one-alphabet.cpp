@@ -3,15 +3,12 @@
 using namespace std;
 bool alph(string str)
 {
-    int n = str.length();
-    for(int i = 0; i < n; i++)
+    int len = str.length();
+    for(int i = 0; i < len; i++)
     {
-        for(int j = i + 1; j < n; j++)
+        if(str[i] != str[0])
         {
-            if(str[i] != str[j])
-            {
-                return true;
-            }
+            return true;
         }
     }
     return false;
