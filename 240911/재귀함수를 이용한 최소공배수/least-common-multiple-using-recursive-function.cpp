@@ -23,13 +23,20 @@ int main() {
     {
         cin >> arr[i];
     }
-
-    int a = lcm(arr[0], arr[1]);
-    for(int i = 2; i < n; i++)
+    if(n == 1)
     {
-        a = lcm(a, arr[i]);
+        cout << arr[0];
     }
-    
-    cout << a;
+    else
+    {
+        int a = lcm(arr[0], arr[1]);
+        for(int i = 2; i < n; i++)
+        {
+            a = lcm(a, arr[i]);
+        }
+        
+        cout << a;
+    }
+
     return 0;
 }
