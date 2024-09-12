@@ -39,9 +39,9 @@ int main() {
         cin >> name >> address >> location;
         humInfo[i] = HumInfo(name, address, location);
     }
-    cout << "name "<< humInfo[n -1].name <<endl;
-    cout << "addr "<< humInfo[n -1].address <<endl;
-    cout << "city "<< humInfo[n -1].location <<endl;
+    cout << "name "<< humInfo[0].name <<endl;
+    cout << "addr "<< humInfo[0].address <<endl;
+    cout << "city "<< humInfo[0].location <<endl;
 
     return 0;
 }
