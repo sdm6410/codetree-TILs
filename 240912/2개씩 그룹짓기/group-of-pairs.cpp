@@ -16,14 +16,7 @@ void SortArray(int *arr1, int *arr2, int n)
             max = sum;
         }
     }
-    if(n == 1)
-    {
-        cout << arr1[0];
-    }
-    else
-    {
-        cout << max;
-    }
+    cout << max;
 }
 
 int main() {
