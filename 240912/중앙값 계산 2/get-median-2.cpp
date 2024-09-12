@@ -3,12 +3,25 @@
 
 using namespace std;
 
+
 void PrintArray(int *arr, int n)
 {
-    for(int i = 0; i < n / 2 + 1; i++)
+    for(int i = 1; i <= n; i++)
     {
-        cout << arr[i] << " ";
+        if(i % 2 == 1)
+        {
+            int temp[i];
+            for(int j = 0; j < i; j++)
+            {
+                temp[j] = arr[j];
+            }
+            sort(temp , temp + i);
+
+            cout << temp[i / 2] << " ";
+        }
     }
+
+
 }
 
 int main() {
@@ -19,8 +32,6 @@ int main() {
     {
         cin >> arr[i];
     }
-
-    sort(arr, arr + n);
 
     PrintArray(arr, n);
     return 0;
