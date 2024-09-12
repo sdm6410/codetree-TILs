@@ -1,5 +1,6 @@
 #include <iostream>
 #include <string>
+#include <algorithm>
 using namespace std;
 
 class HumInfo
@@ -39,9 +40,11 @@ int main() {
         cin >> name >> address >> location;
         humInfo[i] = HumInfo(name, address, location);
     }
-    cout << "name "<< humInfo[0].name <<endl;
-    cout << "addr "<< humInfo[0].address <<endl;
-    cout << "city "<< humInfo[0].location <<endl;
+    sort(humInfo, humInfo + n);
+
+    cout << "name "<< humInfo[n -1].name <<endl;
+    cout << "addr "<< humInfo[n -1].address <<endl;
+    cout << "city "<< humInfo[n -1].location <<endl;
 
     return 0;
 }
