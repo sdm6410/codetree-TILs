@@ -19,6 +19,11 @@ class HumInfo
         this->address = address;
         this->location = location;
     }
+
+    bool operator < (HumInfo &humInfo)
+    {
+        return this->name < humInfo.name;
+    }
 };
 
 
@@ -34,20 +39,9 @@ int main() {
         cin >> name >> address >> location;
         humInfo[i] = HumInfo(name, address, location);
     }
-    char c = humInfo[0].name[0];
-    int index = 0;
-    for(int i = 0; i < n; i++)
-    {
-        if(c < humInfo[i].name[0])
-        {
-            c = humInfo[i].name[0];
-            index = i;
-        }
-    }
-
-    cout << "name "<< humInfo[index].name <<endl;
-    cout << "addr "<< humInfo[index].address <<endl;
-    cout << "city "<< humInfo[index].location <<endl;
+    cout << "name "<< humInfo[n -1].name <<endl;
+    cout << "addr "<< humInfo[n -1].address <<endl;
+    cout << "city "<< humInfo[n -1].location <<endl;
 
     return 0;
 }
