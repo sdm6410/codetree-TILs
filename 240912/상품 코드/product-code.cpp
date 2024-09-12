@@ -14,7 +14,10 @@ class Product
 int main() {
     Product p;
     cout << "product " << p.code << " is " << p.name << endl;
-    Product p1 = Product("leebros", 88);
+    string str;
+    int num
+    cin >> str >> num;
+    Product p1 = Product(str, num);
     cout << "product " << p1.code << " is " << p1.name;
     return 0;
 }
