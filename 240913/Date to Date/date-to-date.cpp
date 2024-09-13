@@ -14,12 +14,12 @@ int main() {
     sum = sum + day2 - day1;
     if(month1 == month2 && day1 == day2)
     {
-        cout << 1;
+            cout << sum;
     }
     else
     {
-    cout << sum;
 
+    cout << sum + 1;
     }
     return 0;
 }
