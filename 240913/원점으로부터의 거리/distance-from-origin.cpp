@@ -21,7 +21,7 @@ bool cmp(Point a, Point b)
     int dis2 = abs(b.x - 0) + abs(b.y - 0);
     if(dis1 == dis2)
     {
-        return a.n > b.n;
+        return a.n < b.n;
     }
     return dis1 < dis2;
 }
