@@ -12,6 +12,6 @@ int main() {
         sum += num_of_days[i];
     }
     sum = sum + day2 - day1;
-    cout << sum + 1;
+    cout << sum;
     return 0;
 }
