@@ -12,14 +12,6 @@ int main() {
         sum += num_of_days[i];
     }
     sum = sum + day2 - day1;
-    if(month1 == month2 && day1 == day2)
-    {
-            cout << sum;
-    }
-    else
-    {
-
     cout << sum + 1;
-    }
     return 0;
 }
