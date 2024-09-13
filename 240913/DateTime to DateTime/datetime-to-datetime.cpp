@@ -6,7 +6,7 @@ int main() {
     cin >> a1 >> b1 >> c1;
     int a2 = 11, b2 = 11, c2 = 11;
     int elapsed_time = 0;
-    if(a1 < a2 || (a1 <= a2 && b1 <= b2 && c1 <= c2))
+    if(a1 < a2 || (a1 <= a2 && b1 < b2 && c1 < c2))
     {
         cout << -1;
     }
