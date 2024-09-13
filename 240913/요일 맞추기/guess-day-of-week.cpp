@@ -5,17 +5,7 @@ int main() {
     int m1, d1, m2, d2;
     int num_of_days[12] = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
     cin >> m1 >> d1 >> m2 >> d2;
-    int temp;
-    if(m1 > m2)
-    {
-        temp = m1;
-        m1 = m2;
-        m2 = temp;
 
-        temp = d1;
-        d1 =d2;
-        d2 = temp;
-    }
     string day[7] = {"Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"};
     int sum = 0;
     for(int i = m1; i < m2; i++)
@@ -24,6 +14,11 @@ int main() {
     }
     sum += d2;
     sum -= d1;
+    if(m1 > m2)
+    {
+        sum = -sum;
+    }
+
 
     if(sum < 0)
     {
