@@ -30,7 +30,7 @@ int main() {
                 b2 = 0;
             }
         }
+        cout << elapsed_time;
     }
-    cout << elapsed_time;
     return 0;
 }
