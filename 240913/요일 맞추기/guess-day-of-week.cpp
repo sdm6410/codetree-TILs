@@ -11,6 +11,10 @@ int main() {
         temp = m1;
         m1 = m2;
         m2 = temp;
+
+        temp = d1;
+        d1 =d2;
+        d2 = temp;
     }
     string day[7] = {"Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"};
     int sum = 0;
