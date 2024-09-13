@@ -43,7 +43,6 @@ int main() {
         }
     } else {
         diff = first - second;
-        cout << diff << endl;
         switch (diff % 7) {
             case 0: cout << "Mon" << endl; break;
             case 1: cout << "Sun" << endl; break;
