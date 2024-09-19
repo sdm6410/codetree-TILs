@@ -11,7 +11,7 @@ int main() {
     }
 
     int sum;
-    int min = arr[0];
+    int min = 999999999999;
     for(int i = 0; i < n; i++)
     {
         sum = 0;
