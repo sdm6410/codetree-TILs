@@ -1,31 +1,34 @@
 #include <iostream>
-#include <vector>
-#include <climits>  // INT_MAX 사용을 위해
+#include <climits>
+#include <algorithm>
+#include <cstdlib>
+#define MAX_N 1003
 
 using namespace std;
 
-int main() {
-    int N;
-    cin >> N; 
+int n;
+int a[MAX_N];
 
-    vector<int> rooms(N);  
-    for (int i = 0; i < N; i++) {
-        cin >> rooms[i];  
+int main()
+{
+    cin >> n;
+    for(int i = 0; i < n; i++)
+    {
+        cin >> a[i];
     }
 
-    int ans = INT_MAX;  
-
-    for (int i = 0; i < N; i++) {
-        int dist = 0;
-
-        for (int j = i; j < i + N; j++) {
-            int room_idx = j % N; 
-            dist += rooms[room_idx] * abs(j - i);
+    int ans = INT_MAX;
+    for(int i = 0; i < n; i++)
+    {
+        int sum_dist = 0;
+        for(int j = 0; j < n; j++)
+        {
+            int dist = (j + n - i) % n;
+            sum_dist += dist * a[j];
         }
 
-        ans = min(ans, dist); 
+        ans = min(ans, sum_dist);
     }
-    cout << ans << endl;  
 
-    return 0;
+    cout << ans;
 }
