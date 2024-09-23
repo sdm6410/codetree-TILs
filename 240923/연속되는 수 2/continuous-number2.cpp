@@ -9,11 +9,12 @@ int main() {
     {
         cin >> arr[i];
     }
-    int cnt = 0;
     int prev = 0;
     int max = -999;
     for(int i = 0; i < n; i++)
     {
+        if(n == 1)
+            max = 1;
         if(i == 0 || arr[i] != arr[i - 1])
         {
             int total = i - prev;
