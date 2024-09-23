@@ -1,11 +1,13 @@
 #include <iostream>
 #include <algorithm>
-
+#include <string>
 #define DIR_NUM 8
+#define MAX_N 100
 using namespace std;
 
 int dx[DIR_NUM] = {1, 1, 1, -1, -1, -1, 0, 0};
 int dy[DIR_NUM] = {-1, 0, 1, -1, 0, 1, -1, 1};
+string arr[MAX_N];
 int InRange(int x, int y, int n, int m)
 {
     return 0 <= x && x < n && 0 <= y && y < m;
@@ -14,13 +16,9 @@ int InRange(int x, int y, int n, int m)
 int main() {
     int n, m;
     cin >> n >> m;
-    char arr[n][m];
     for(int i = 0; i < n; i++)
     {
-        for(int j = 0; j < m; j++)
-        {
-            cin >> arr[i][j];
-        }
+        cin >> arr[i];
     }
     int cnt = 0;
     for(int i = 0; i < n; i++)
