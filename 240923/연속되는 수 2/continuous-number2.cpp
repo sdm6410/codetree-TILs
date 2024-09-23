@@ -11,12 +11,14 @@ int main() {
     }
     int prev = 0;
     int max = -999;
+    bool flag = true;
     for(int i = 0; i < n; i++)
     {
         if(n == 1)
             max = 1;
         if(i == 0 || arr[i] != arr[i - 1])
         {
+            flag = false;
             int total = i - prev;
             if(total > max)
             {
@@ -26,7 +28,14 @@ int main() {
         }
         
     }
+    if(flag)
+    {
+        cout << n;
+    }
+    else
+    {
+        cout << max;
 
-    cout << max;
+    }
     return 0;
 }
