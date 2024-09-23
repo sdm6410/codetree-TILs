@@ -46,7 +46,7 @@ int main() {
                     cury = ny;
                 }
 
-                if(curt == 3)
+                if(curt >= 3)
                 {
                     cnt++;
                 }
