@@ -1,63 +1,62 @@
 #include <iostream>
-#define MAX 19
+#include <algorithm>
+
+#define DIR_NUM 8
+
 using namespace std;
-int arr[MAX + 5][MAX + 5];
-int main() {
-    for(int i = 0; i < MAX; i++){
-        for(int j = 0; j< MAX; j++){
-            cin>> arr[i][j]; 
+
+int arr[19][19];
+
+int dx[DIR_NUM] = {1, 1, 1, -1, -1, -1, 0, 0};
+int dy[DIR_NUM] = {-1, 0, 1, -1, 0, 1, -1, 1};
+
+int InRange(int x, int y)
+{
+    return 0 <= x && x < 19 && 0 <= y && y < 19;
+}
+
+int main()
+{
+    for(int i = 0; i < 19; i++)
+    {
+        for(int j = 0; j < 19; j++)
+        {
+            cin >> arr[i][j];
         }
-    }   
-    int winner =  0;
-    for(int i = 0; i < MAX; i++){
-        for(int j = 0; j < MAX; j++){ 
-            //세로 방향 확인
-            if(arr[i][j] != 0 && arr[i + 1][j] == arr[i][j]){
-                bool win = true;
-                for(int x = i + 1; x < i + 5; x++)
-                    if(arr[x][j] != arr[i][j])
-                        win = false;
-                if(win){
-                    cout<< arr[i][j]<< endl;
-                    cout<< i + 3<< ' '<< j + 1<< endl;
-                    return 0;
+    }
+
+    for(int i = 0; i < 19; i++)
+    {
+        for(int j = 0; j < 19; j++)
+        {
+            if(arr[i][j] == 0) continue;
+
+            for(int k = 0; k < DIR_NUM; k++)
+            {
+                int curt = 1;
+                int curx = i;
+                int cury = j;
+                while(true)
+                {
+                    int nx = curx + dx[k];
+                    int ny = cury + dy[k];
+                    if(InRange(nx, ny) == false)
+                        break;
+                    if(arr[nx][ny] != arr[i][j])
+                        break;
+                    curt++;
+                    curx = nx;
+                    cury = ny;
                 }
-            //가로방향 확인
-            }if(arr[i][j] != 0 && arr[i][j + 1] == arr[i][j]){
-                bool win = true;
-                for(int y = j + 1; y < j + 5; y++)
-                    if(arr[i][y] != arr[i][j])
-                        win = false;
-                if(win){
-                    cout<< arr[i][j]<< endl;
-                    cout<< i + 1<< ' '<< j + 3<< endl;  
-                    return 0;
-                }
-            //오른쪽 대각선 확인
-            }if(arr[i][j] != 0 && arr[i + 1][j + 1] == arr[i][j]){
-                bool win = true;
-                for(int y = 1; y < 5; y++)
-                    if(arr[i + y][j + y] != arr[i][j])
-                        win = false;
-                if(win){
-                    cout<< arr[i][j]<< endl;
-                    cout<< i + 3<< ' '<< j + 3<< endl;  
-                    return 0;
-                }
-            //왼쪽 대각선 확인 
-            }if(arr[i][j] != 0 && arr[i + 1][j - 1] == arr[i][j] && j >= 4){
-                bool win = true;
-                for(int y = 1; y < 5; y++)
-                    if(arr[i + y][j - y] != arr[i][j])
-                        win = false;
-                if(win){
-                    cout<< arr[i][j]<< endl;
-                    cout<< i + 3<< ' '<< j - 1<< endl;  
+                if(curt == 5)
+                {
+                    cout << arr[i][j] << endl;
+                    cout << i + 2 * dx[k] + 1 << " " << j + 2 * dy[k] + 1;
                     return 0;
                 }
             }
         }
-    }   
-    cout<< winner; 
+    }
+    cout << 0;
     return 0;
 }
