@@ -16,16 +16,17 @@ int main() {
     {
         if(n == 1)
             max = 1;
-        if(i == 0 || arr[i] != arr[i - 1])
-        {
-            flag = false;
-            int total = i - prev;
-            if(total > max)
+        if(arr[i] != arr[i - 1])
             {
-                max = total;
+                flag = false;
+                int total = i - prev;
+                if(total > max)
+                {
+                    max = total;
+                }
+                prev = i;
             }
-            prev = i;
-        }
+        
         
     }
     if(flag)
