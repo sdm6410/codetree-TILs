@@ -52,22 +52,14 @@ int main() {
     }
 
     after += d2;
-
     int num = dayToNum(day);
-    int bb = before / 7;
-    int bD = before % 7;
-
-    if(bD >= num)
+    int total = after - before;
+    int answer = total / 7;
+    int answer_ = total % 7;
+    if(answer_ >= num)
     {
-        bb += 1;
+        answer += 1;
     }
-
-    int ab = after / 7;
-    int aD = after % 7;
-    if(aD >= num)
-    {
-        ab += 1;
-    }
-    cout << ab - bb;
+    cout << answer;
     return 0;
 }
