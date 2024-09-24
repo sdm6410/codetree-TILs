@@ -23,6 +23,8 @@ int main() {
         {
             cnt = 1;
         }
+        max_ = max(max_,cnt);
+
     }
     cout << max_;
     return 0;
