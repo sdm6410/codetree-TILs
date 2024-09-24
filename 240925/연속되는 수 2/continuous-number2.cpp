@@ -9,7 +9,7 @@ int main() {
     {
         cin >> arr[i];
     }
-    int cnt = 0;
+    int cnt = 1;
     int max = 0;
     for(int i = 1; i < n; i++)
     {
@@ -22,7 +22,7 @@ int main() {
             if(max < cnt)
             {
                 max = cnt;
-                cnt = 0;
+                cnt = 1;
             }
         }
     }
