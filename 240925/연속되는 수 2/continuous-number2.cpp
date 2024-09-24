@@ -10,7 +10,7 @@ int main() {
     {
         cin >> arr[i];
     }
-    int cnt = 1;
+    int cnt = 0;
     int max_ = 0;
     for(int i = 0; i < n; i++)
     {
