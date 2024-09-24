@@ -57,14 +57,14 @@ int main() {
     int bb = before / 7;
     int bD = before % 7;
 
-    if(bD > num)
+    if(bD >= num)
     {
         bb += 1;
     }
 
     int ab = after / 7;
     int aD = after % 7;
-    if(aD > num)
+    if(aD >= num)
     {
         ab += 1;
     }
