@@ -21,7 +21,6 @@ int main() {
         {
             if(max < cnt)
             {
-                cnt++;
                 max = cnt;
                 cnt = 0;
             }
