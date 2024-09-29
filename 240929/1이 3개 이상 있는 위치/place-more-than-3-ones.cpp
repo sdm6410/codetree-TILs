@@ -1,6 +1,11 @@
 #include <iostream>
 using namespace std;
 
+bool InRange(int x, int y)
+{
+    return (0 <= x && x < 5 && 0 <= y && y < 5);
+}
+
 int main() {
     int n;
     cin >> n;
@@ -27,7 +32,7 @@ int main() {
 
                 x = i + dx[z];
                 y = j + dy[z];
-                if(arr[x][y] == 1)
+                if(InRange(x,y) && arr[x][y] == 1)
                 {
                     cnt++;
                 }
