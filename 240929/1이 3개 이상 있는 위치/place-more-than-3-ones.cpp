@@ -27,7 +27,7 @@ int main() {
         for(int j = 0; j < n; j++)
         {
             int cnt = 0;
-            for(int z = 0; z < 4; z++)
+            for(int z = 0; z <5; z++)
             {
 
                 x = i + dx[z];
