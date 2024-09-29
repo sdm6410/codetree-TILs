@@ -1,13 +1,13 @@
 #include <iostream>
 using namespace std;
+int n;
 
 bool InRange(int x, int y)
 {
-    return (0 <= x && x < 5 && 0 <= y && y < 5);
+    return (0 <= x && x < n && 0 <= y && y < n);
 }
 
 int main() {
-    int n;
     cin >> n;
     int arr[n][n];
     int answer = 0;
