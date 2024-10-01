@@ -19,7 +19,6 @@ int main() {
         if(str[i] == 'L')
         {
             dir = (3 + dir) % 4;
-            cout << "dir : " << dir << endl;
         }
         else if(str[i] == 'R')
         {
