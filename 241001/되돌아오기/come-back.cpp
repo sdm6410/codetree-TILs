@@ -26,13 +26,14 @@ int main() {
     int dx[4] = {-1, 0, 0, 1};
     int dy[4] = {0, -1, 1, 0};
     int cnt = 0;
+    bool flag = false;
+
     for(int i = 0; i < n; i++)
     {
         char d;
         int s;
         cin >> d >> s;
         int dir = GetDir(d);
-        bool flag = false;
         for(int j = 0; j < s; j++)
         {
             x = x + dx[dir];
@@ -49,8 +50,13 @@ int main() {
             break;
     }
     if(flag)
+    {
         cout << cnt;
+    }   
     else
+    {
         cout << -1;
+
+    }
     return 0;
 }
