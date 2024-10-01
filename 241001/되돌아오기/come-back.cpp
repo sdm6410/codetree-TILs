@@ -47,6 +47,8 @@ int main() {
 
         if(flag)
             break;
+        else
+            cnt = -1;
     }
     cout << cnt;
     return 0;
