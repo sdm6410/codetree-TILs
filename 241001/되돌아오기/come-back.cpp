@@ -1,62 +1,58 @@
 #include <iostream>
+#define DIR_NUM 4
 using namespace std;
-int GetDir(char c)
+
+int n, x, y;
+
+int dx[DIR_NUM] = {1, -1, 0, 0};
+int dy[DIR_NUM] = {0, 0, -1, 1};
+
+int ans = -1;
+int elapsed_time;
+
+bool Move(int dir, int dist)
 {
-    if(c == 'W')
+    while(dist--)
     {
-        return 0;
-    }
-    else if(c == 'S')
-    {
-        return 1;
-    }
-    else if(c == 'N')
-    {
-        return 2;
-    }
-    else
-    {
-        return 3;
-    }
-}
-int main() {
-    int n;
-    cin >> n;
-    int x = 0, y = 0;
-    int dx[4] = {-1, 0, 0, 1};
-    int dy[4] = {0, -1, 1, 0};
-    int cnt = 0;
-    bool flag = false;
+        x += dx[dir];
+        y += dy[dir];
 
-    for(int i = 0; i < n; i++)
-    {
-        char d;
-        int s;
-        cin >> d >> s;
-        int dir = GetDir(d);
-        for(int j = 0; j < s; j++)
+        elapsed_time++;
+
+        if(x == 0 && y == 0)
         {
-            x = x + dx[dir];
-            y = y + dy[dir];
-            cnt++;
-            if(x == 0 && y == 0)
-            {
-                flag = true;
-                break;
-            }
+            ans = elapsed_time;
+            return true;
         }
+    }
+    return false;
+}
 
-        if(flag)
+int main()
+{
+    cin >> n;
+
+    while(n--)
+    {
+        char c_dir; int dist;
+        cin >> c_dir >> dist;
+
+        int dir;
+        if(c_dir == 'E')
+            dir = 0;
+        else if(c_dir == 'W')
+            dir = 1;
+        else if(c_dir == 'S')
+            dir = 2;
+        else
+            dir = 3;
+        
+        bool done = Move(dir, dist);
+
+        if(done)
             break;
     }
-    if(flag)
-    {
-        cout << cnt;
-    }   
-    else
-    {
-        cout << -1;
 
-    }
+    cout << ans;
     return 0;
 }
