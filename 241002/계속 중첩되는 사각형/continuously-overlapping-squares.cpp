@@ -27,7 +27,7 @@ int main() {
         {
             for(int y = y1[i]; y < y2[i]; y++)
             {
-                checked[x][y] = (i + 1) % 3;
+                checked[x][y] = (i%2 == 0)?1:2;
             }
         }
     }
