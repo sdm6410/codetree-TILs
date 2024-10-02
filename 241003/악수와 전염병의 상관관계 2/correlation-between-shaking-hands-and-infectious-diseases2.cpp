@@ -39,6 +39,7 @@ int main()
     for(int i = 0; i < t; i++)
     {
         int time, person1, person2;
+        cin >> time >> person1 >> person2;
         shakes[i] = Shake(time, person1, person2);
     }
 
