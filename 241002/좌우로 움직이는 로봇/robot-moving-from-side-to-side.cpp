@@ -8,26 +8,26 @@ int main() {
     cin >> N >> M;
 
     // 입력 최대치에 따라 배열 크기를 넉넉하게 설정
-    vector<int> pos_a(100001, 0), pos_b(100001, 0);
+    vector<int> pos_a(200001, 0), pos_b(200001, 0);
     int time_a = 1, time_b = 1;
 
     // t만큼의 변화동안 pos_a
-    for (int i = 0; i < N; ++i) {
+    for (int i = 0; i < N; i++) {
         int t;
         char d;
         cin >> t >> d;
-        for (int j = 0; j < t; ++j) {
+        for (int j = 0; j < t; j++) {
             pos_a[time_a] = pos_a[time_a - 1] + (d == 'R' ? 1 : -1);
             time_a++;
         }
     }
 
     // t만큼의 변화동안 pos_b
-    for (int i = 0; i < M; ++i) {
+    for (int i = 0; i < M; i++) {
         int t;
         char d;
         cin >> t >> d;
-        for (int j = 0; j < t; ++j) {
+        for (int j = 0; j < t; j++) {
             pos_b[time_b] = pos_b[time_b - 1] + (d == 'R' ? 1 : -1);
             time_b++;
         }
