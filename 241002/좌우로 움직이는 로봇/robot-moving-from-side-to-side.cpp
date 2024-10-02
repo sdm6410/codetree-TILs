@@ -8,7 +8,7 @@ int main() {
     cin >> N >> M;
 
     // 입력 최대치에 따라 배열 크기를 넉넉하게 설정
-    vector<int> pos_a(200001, 0), pos_b(200001, 0);
+    vector<int> pos_a(10001, 0), pos_b(10001, 0);
     int time_a = 1, time_b = 1;
 
     // t만큼의 변화동안 pos_a
