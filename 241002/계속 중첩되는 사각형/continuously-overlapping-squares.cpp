@@ -33,9 +33,9 @@ int main() {
     }
 
     int area = 0;
-    for(int x = 0; x <= MAX_R; x++)
+    for(int x = 0; x < MAX_R; x++)
     {
-        for(int y = 0; y <= MAX_R; y++)
+        for(int y = 0; y < MAX_R; y++)
         {
             if(checked[x][y] == 2)
                 area++;
