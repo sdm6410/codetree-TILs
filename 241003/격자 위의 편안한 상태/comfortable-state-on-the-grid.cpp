@@ -30,7 +30,7 @@ int main() {
             }
         }
 
-        if(cnt == 3)
+        if(cnt >= 3)
         {
             cout << 1 << endl;
         }
