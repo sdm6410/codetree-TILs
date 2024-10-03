@@ -25,7 +25,7 @@ int main() {
             int y = c - 1 + dy[j];
             if(!InRange(x, y))
             {
-                continue;
+                break;
             }
 
             if(arr[x][y] == 1)
