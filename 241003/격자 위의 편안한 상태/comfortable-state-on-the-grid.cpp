@@ -24,7 +24,7 @@ int main() {
             int x = r + dx[j];
             int y = c + dy[j];
            
-            if(InRange(x, y) &&arr[x][y] == 1)
+            if(InRange(x, y) && arr[x][y] == 1)
             {
                 cnt++;
             }
