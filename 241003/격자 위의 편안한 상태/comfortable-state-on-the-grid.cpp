@@ -12,7 +12,7 @@ bool InRange(int x, int y){
 
 int main() {
     cin >> n >> m;
-    int arr[n][n] = {0};
+    int arr[n + 1][n + 1] = {0};
     for(int i = 0; i < m; i++)
     {
         int r, c;
