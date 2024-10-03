@@ -17,12 +17,12 @@ int main() {
     {
         int r, c;
         cin >> r >> c;
-        arr[r-1][c-1] = 1;
+        arr[r][c] = 1;
         int cnt = 0;
         for(int j = 0; j < 4; j++)
         {
-            int x = r - 1 + dx[j];
-            int y = c - 1 + dy[j];
+            int x = r + dx[j];
+            int y = c + dy[j];
             if(!InRange(x, y))
             {
                 break;
