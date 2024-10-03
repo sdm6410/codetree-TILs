@@ -5,7 +5,7 @@ int dx[4] = {-1, 1, 0, 0};
 int dy[4] = {0, 0, -1, 1};
 
 bool InRange(int x, int y){
-    return 0 <= x && x < n && 0 <= y && y < n;
+    return 1 <= x && x <= n && 1 <= y && y <= n;
 }
 
 
@@ -30,7 +30,7 @@ int main() {
             }
         }
 
-        if(cnt >= 3)
+        if(cnt == 3)
         {
             cout << 1 << endl;
         }
