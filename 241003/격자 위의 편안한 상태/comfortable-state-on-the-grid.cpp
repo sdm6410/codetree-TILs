@@ -3,6 +3,13 @@ using namespace std;
 int n, m;
 int dx[4] = {-1, 1, 0, 0};
 int dy[4] = {0, 0, -1, 1};
+
+bool InRange(int x, int y){
+    return 0 <= x && x < n && 0 <= y && y < m;
+}
+
+
+
 int main() {
     cin >> n >> m;
     int arr[n][n] = {0};
@@ -14,15 +21,20 @@ int main() {
         int cnt = 0;
         for(int j = 0; j < 4; j++)
         {
-            int x = dx[j];
-            int y = dy[j];
-            if(arr[r-1+x][c-1+y] == 1)
+            int x = r - 1 + dx[j];
+            int y = c - 1 + dy[j];
+            if(!InRange(x, y))
+            {
+                continue;
+            }
+
+            if(arr[x][y] == 1)
             {
                 cnt++;
             }
         }
 
-        if(cnt >= 3)
+        if(cnt == 3)
         {
             cout << 1 << endl;
         }
