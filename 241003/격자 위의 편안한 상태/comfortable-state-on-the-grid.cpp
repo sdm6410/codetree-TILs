@@ -23,11 +23,7 @@ int main() {
         {
             int x = r + dx[j];
             int y = c + dy[j];
-            if(!InRange(x, y))
-            {
-                break;
-            }
-
+           
             if(arr[x][y] == 1)
             {
                 cnt++;
