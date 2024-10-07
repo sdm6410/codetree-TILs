@@ -1,54 +1,52 @@
 #include <iostream>
-#define DIR_NUM 4
-#define MAX_N 100
+#include <vector>
+
 using namespace std;
 
-int n, m;
-char arr[MAX_N][MAX_N];
+int n = 4;
+vector<vector<int>> answer(n, vector<int>(n, 0));  // 2D 벡터로 배열 생성
 
-int dx[DIR_NUM] = {0, 1, 0, -1};
-int dy[DIR_NUM] = {1, 0, -1, 0};
-
-int curr_x, curr_y;
-int dir = 0;
-
-bool InRange(int x, int y)
-{
-    return 0 <= x && x < n && 0 <= y && y < m;
+// 범위 안에 있는지 확인하는 함수
+bool in_range(int x, int y) {
+    return 0 <= x && x < n && 0 <= y && y < n;
 }
 
 int main() {
-    cin >> n >> m;
-    arr[curr_x][curr_y] = 'A';
+    // 방향벡터: 오른쪽(0), 아래쪽(1), 왼쪽(2), 위쪽(3)
+    int dxs[] = {0, 1, 0, -1};
+    int dys[] = {1, 0, -1, 0};
+    int x = 0, y = 0;  // 시작 위치 (0, 0)
+    int dir_num = 0;   // 0: 오른쪽, 1: 아래쪽, 2: 왼쪽, 3: 위쪽
 
-    for(int i = 1; i < n * m; i++)
-    {
-        while(true)
-        {
-            int nx = curr_x + dx[dir];
-            int ny = curr_y + dy[dir];
+    // 처음 시작 위치에 1을 넣습니다.
+    answer[x][y] = 1;
 
-            if(InRange(nx, ny) && arr[nx][ny] == 0)
-            {
-                curr_x = nx;
-                curr_y = ny;
-                arr[curr_x][curr_y] = 'A' + i;
-                break;
-            }else
-            {
-                dir = (dir + 3) % 4;
-            }
+    // n * n번 반복
+    for (int i = 2; i <= n * n; i++) {
+        // 현재 방향을 기준으로 다음 위치 계산
+        int nx = x + dxs[dir_num];
+        int ny = y + dys[dir_num];
+
+        // 범위를 벗어나거나 이미 숫자가 있으면 방향을 바꿈
+        if (!in_range(nx, ny) || answer[nx][ny] != 0) {
+            dir_num = (dir_num + 1) % 4;  // 시계방향 회전
+            nx = x + dxs[dir_num];
+            ny = y + dys[dir_num];
         }
+
+        // 다음 위치로 이동하고 값 채우기
+        x = nx;
+        y = ny;
+        answer[x][y] = i;
     }
 
-    for(int i = 0; i < n; i++)
-    {
-        for(int j = 0; j < m; j++)
-        {
-            cout << arr[i][j] << " ";
+    // 결과 출력
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < n; j++) {
+            cout << answer[i][j] << " ";
         }
         cout << endl;
     }
-    
+
     return 0;
 }
