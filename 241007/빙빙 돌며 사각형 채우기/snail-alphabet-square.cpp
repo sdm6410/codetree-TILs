@@ -1,49 +1,67 @@
 #include <iostream>
-#include <vector>
-
+#define DIR_NUM 4
+#define MAX_N 100
 using namespace std;
 
-int n = 4;
-vector<vector<int>> answer(n, vector<int>(n, 0));  // 2D 벡터로 배열 생성
+int n, m;
+char arr[MAX_N][MAX_N];
 
-// 범위 안에 있는지 확인하는 함수
-bool in_range(int x, int y) {
-    return 0 <= x && x < n && 0 <= y && y < n;
+int dx[DIR_NUM] = {0, 1, 0, -1};  // 오른쪽, 아래, 왼쪽, 위
+int dy[DIR_NUM] = {1, 0, -1, 0};
+
+int curr_x = 0, curr_y = 0;  // 시작 위치 (0, 0)
+int dir = 0;  // 시작 방향 오른쪽
+
+bool InRange(int x, int y) {
+    return 0 <= x && x < n && 0 <= y && y < m;
 }
 
 int main() {
-    // 방향벡터: 오른쪽(0), 아래쪽(1), 왼쪽(2), 위쪽(3)
-    int dxs[] = {0, 1, 0, -1};
-    int dys[] = {1, 0, -1, 0};
-    int x = 0, y = 0;  // 시작 위치 (0, 0)
-    int dir_num = 0;   // 0: 오른쪽, 1: 아래쪽, 2: 왼쪽, 3: 위쪽
+    cin >> n >> m;
 
-    // 처음 시작 위치에 1을 넣습니다.
-    answer[x][y] = 1;
+    // 배열을 0으로 초기화합니다.
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < m; j++) {
+            arr[i][j] = 0;  // 모든 위치를 초기화
+        }
+    }
 
-    // n * n번 반복
-    for (int i = 2; i <= n * n; i++) {
-        // 현재 방향을 기준으로 다음 위치 계산
-        int nx = x + dxs[dir_num];
-        int ny = y + dys[dir_num];
+    arr[curr_x][curr_y] = 'A';  // 첫 번째 위치에 'A'를 넣습니다.
 
-        // 범위를 벗어나거나 이미 숫자가 있으면 방향을 바꿈
-        if (!in_range(nx, ny) || answer[nx][ny] != 0) {
-            dir_num = (dir_num + 1) % 4;  // 시계방향 회전
-            nx = x + dxs[dir_num];
-            ny = y + dys[dir_num];
+    // n * m 개의 문자를 차례로 채워 넣습니다.
+    for (int i = 1; i < n * m; i++) {
+        bool moved = false;  // 이동 여부를 저장하는 변수
+
+        for (int k = 0; k < DIR_NUM; k++) {
+            int nx = curr_x + dx[dir];
+            int ny = curr_y + dy[dir];
+
+            // 새로운 위치가 배열 범위 내에 있고, 아직 방문하지 않은 곳이면 이동합니다.
+            if (InRange(nx, ny) && arr[nx][ny] == 0) {
+                curr_x = nx;
+                curr_y = ny;
+                arr[curr_x][curr_y] = 'A' + i;  // 다음 문자를 넣습니다.
+                moved = true;  // 이동 완료
+                break;
+            } else {
+                // 이동할 수 없으면 시계방향으로 회전
+                dir = (dir + 1) % DIR_NUM;
+            }
         }
 
-        // 다음 위치로 이동하고 값 채우기
-        x = nx;
-        y = ny;
-        answer[x][y] = i;
+        // 만약 4방향 모두 이동할 수 없다면 종료
+        if (!moved) {
+            break;
+        }
     }
 
     // 결과 출력
     for (int i = 0; i < n; i++) {
-        for (int j = 0; j < n; j++) {
-            cout << answer[i][j] << " ";
+        for (int j = 0; j < m; j++) {
+            if (arr[i][j] == 0)
+                cout << ". ";  // 방문하지 않은 곳은 '.'으로 출력
+            else
+                cout << arr[i][j] << " ";  // 방문한 곳은 문자를 출력
         }
         cout << endl;
     }
