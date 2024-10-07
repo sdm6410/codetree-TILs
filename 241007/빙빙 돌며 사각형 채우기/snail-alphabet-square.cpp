@@ -32,6 +32,7 @@ int main() {
     for (int i = 1; i < n * m; i++) {
         bool moved = false;  // 이동 여부를 저장하는 변수
 
+        // 최대 4번 방향을 전환하여 가능한 방향을 찾음
         for (int k = 0; k < DIR_NUM; k++) {
             int nx = curr_x + dx[dir];
             int ny = curr_y + dy[dir];
@@ -40,7 +41,7 @@ int main() {
             if (InRange(nx, ny) && arr[nx][ny] == 0) {
                 curr_x = nx;
                 curr_y = ny;
-                arr[curr_x][curr_y] = 'A' + i;  // 다음 문자를 넣습니다.
+                arr[curr_x][curr_y] = 'A' + i % 26;  // 다음 문자를 넣습니다. ('Z' 이후는 다시 'A'로)
                 moved = true;  // 이동 완료
                 break;
             } else {
@@ -49,7 +50,7 @@ int main() {
             }
         }
 
-        // 만약 4방향 모두 이동할 수 없다면 종료
+        // 만약 4방향 모두 이동할 수 없다면 종료 (이 상황은 발생하지 않음)
         if (!moved) {
             break;
         }
