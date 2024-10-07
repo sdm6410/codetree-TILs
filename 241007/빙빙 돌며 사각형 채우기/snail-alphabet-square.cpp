@@ -1,6 +1,6 @@
 #include <iostream>
 #define DIR_NUM 4
-#define MAX_N 100
+#define MAX_N 101
 using namespace std;
 
 int n, m;
@@ -14,7 +14,7 @@ int dir = 0;
 
 bool InRange(int x, int y)
 {
-    return 0 <= x && x < m && 0 <= y && y < n;
+    return 0 <= x && x < n && 0 <= y && y < m;
 }
 
 int main() {
