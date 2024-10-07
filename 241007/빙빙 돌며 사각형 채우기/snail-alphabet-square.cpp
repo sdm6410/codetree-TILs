@@ -1,6 +1,6 @@
 #include <iostream>
 #define DIR_NUM 4
-#define MAX_N 101
+#define MAX_N 100
 using namespace std;
 
 int n, m;
@@ -21,7 +21,7 @@ int main() {
     cin >> n >> m;
     arr[curr_x][curr_y] = 'A';
 
-    for(int i = 2; i <= n * m; i++)
+    for(int i = 1; i < n * m; i++)
     {
         while(true)
         {
@@ -32,7 +32,7 @@ int main() {
             {
                 curr_x = nx;
                 curr_y = ny;
-                arr[curr_x][curr_y] = 'A' + i - 1;
+                arr[curr_x][curr_y] = 'A' + i;
                 break;
             }else
             {
