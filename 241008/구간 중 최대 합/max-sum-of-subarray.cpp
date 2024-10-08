@@ -15,11 +15,15 @@ int main() {
     int max_ = 0;
     for(int i = 0; i < n - k + 1; i++)
     {
-        sum = arr[i] + arr[i + 1] + arr[i + 2];
+        for(int j = i; j < k + i; j++)
+        {
+            sum += arr[j];
+        }
         if(sum > max_)
         {
             max_ = max(max_, sum);
         }
+        sum = 0;
     }
     cout << max_;
     return 0;
