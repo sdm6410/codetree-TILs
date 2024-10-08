@@ -1,6 +1,6 @@
 #include <iostream>
-#include <vector>
 #include <algorithm>
+
 #define MAX_N 100
 
 using namespace std;
@@ -9,14 +9,13 @@ int n, m;
 int arr1[MAX_N], arr2[MAX_N];
 int tmp[MAX_N];
 
-int main() {
+int main()
+{
     cin >> n >> m;
     for(int i = 0; i < n; i++)
         cin >> arr1[i];
-    
     for(int i = 0; i < m; i++)
         cin >> arr2[i];
-
     sort(arr2, arr2 + m);
 
     int cnt = 0;
@@ -38,6 +37,7 @@ int main() {
 
         if(issame)
             cnt++;
+
     }
 
     cout << cnt;
