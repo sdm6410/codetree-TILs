@@ -1,38 +1,45 @@
 #include <iostream>
 #include <vector>
 #include <algorithm>
+#define MAX_N 100
 
 using namespace std;
 
+int n, m;
+int arr1[MAX_N], arr2[MAX_N];
+int tmp[MAX_N];
+
 int main() {
-    int n, m;
     cin >> n >> m;
+    for(int i = 0; i < n; i++)
+        cin >> arr1[i];
     
-    vector<int> a(n);
-    vector<int> b(m);
-    
-    for (int i = 0; i < n; i++) {
-        cin >> a[i];
-    }
-    
-    for (int i = 0; i < m; i++) {
-        cin >> b[i];
-    }
-    
+    for(int i = 0; i < m; i++)
+        cin >> arr2[i];
+
+    sort(arr2, arr2 + m);
+
     int cnt = 0;
-    
-    // 시작점 잡기
-    for (int i = 0; i <= n - m; i++) {
-        vector<int> sub_a(a.begin() + i, a.begin() + i + m);
-        sort(sub_a.begin(), sub_a.end());
-        sort(b.begin(), b.end());
-        
-        if (sub_a == b) {
-            cnt++;
+    for(int i = 0; i <= n - m; i++)
+    {
+        for(int j = 0; j < m; j++)
+            tmp[j] = arr1[i + j];
+        sort(tmp, tmp + m);
+
+        bool issame = true;
+        for(int j = 0; j < m; j++)
+        {
+            if(tmp[j] != arr2[j])
+            {
+                issame = false;
+                break;
+            }
         }
+
+        if(issame)
+            cnt++;
     }
-    
-    cout << cnt << endl;
-    
+
+    cout << cnt;
     return 0;
 }
