@@ -1,35 +1,36 @@
 #include <iostream>
-#include <vector>
-#include <climits> // for INT_MIN
+#include <algorithm>
+
+#define MAX_NUM 100
+
 using namespace std;
 
-const int MAX_SIZE = 400;
+int n, k;
+int arr[MAX_NUM + 1];
 
-int main() {
-    int n, k;
+int main()
+{
     cin >> n >> k;
+    for(int i = 0; i < n; i++)
+    {
+        int x, a;
+        cin >> a >> x;
 
-    vector<int> lines(MAX_SIZE + 1, 0); // 배열 초기화
-
-    // 입력 처리
-    for (int i = 0; i < n; ++i) {
-        int count, pos;
-        cin >> count >> pos;
-        lines[pos] += count; // 주어진 위치에 사탕 개수 추가
+        arr[x] += a;
     }
 
-    int max_count = INT_MIN; // 가장 작은 값으로 초기화
-
-    // 범위 내에서 바구니 위치 이동
-    for (int i = k; i <= MAX_SIZE - k; ++i) {
-        int count = 0;
-        for (int j = i - k; j <= i + k; ++j) {
-            count += lines[j];
+    int max_sum = 0;
+    for(int i = 0; i <= MAX_NUM; i++)
+    {
+        int sum = 0;
+        for(int j = i - k; j <= i + k; j++)
+        {
+            if(j >= 0 && j <= MAX_NUM)
+                sum += arr[j];
         }
-        max_count = max(max_count, count);
+
+        max_sum = max(max_sum, sum);
     }
-
-    cout << max_count << endl;
-
+    cout << max_sum;
     return 0;
 }
