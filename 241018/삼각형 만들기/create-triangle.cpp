@@ -1,7 +1,7 @@
 #include <iostream>
 #include <algorithm>
 using namespace std;
-#define MAX_N 100
+#define MAX_N 10000010
 int n;
 int x_p[MAX_N], y_p[MAX_N];
 
