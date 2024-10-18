@@ -1,37 +1,38 @@
-#include<stdio.h>
-#include<math.h>
-#include<stdlib.h>
+#include <iostream>
+#include <algorithm>
+#include <climits>
+using namespace std;
+#define MAX_N 100
+int n;
+int x_p[MAX_N], y_p[MAX_N];
 
-int farea(int i, int j, int k);
-signed int A[10000010];
-signed int B[10000010];
+int GetMax(int i1, int i2, int i3)
+{
+    return abs((x_p[i1] * y_p[i2] + x_p[i2] * y_p[i3] + x_p[i3] * y_p[i1]) - (x_p[i2] * y_p[i1] + x_p[i3] * y_p[i2] + x_p[i1] * y_p[i3]));
+}
 
 int main() {
-    int N, i, j, k, area, maxarea = 0;
-    scanf("%d", &N);
-    
-    for (i = 0; i < N; i++) {
-        scanf("%d %d", &A[i], &B[i]);
+    cin >> n;
+    for(int i = 0; i < n; i++)
+    {
+        int x, y;
+        cin >> x >> y;
+        x_p[i] = x;
+        y_p[i] = y;
     }
-
-    for (i = 0; i < N; i++) {
-        for (j = i + 1; j < N; j++) {
-            for (k = j + 1; k < N; k++) {
-                // 괄호로 우선순위를 명확히 조정
-                if ((A[i] == A[j] || A[j] == A[k] || A[k] == A[i]) &&
-                    (B[i] == B[j] || B[j] == B[k] || B[k] == B[i])) {
-                    area = farea(i, j, k);
-                    maxarea = fmax(area, maxarea);
-                }
+    int answer = 0;
+    for(int i = 0; i < n; i++)
+    {
+        for(int j = i + 1; j < n; j++)
+        {
+            for(int z = j + 1; z < n; z++)
+            {
+                if((x_p[i] == x_p[j] || x_p[j] == x_p[z] || x_p[z] == x_p[i]) && (y_p[i] == y_p[j] || y_p[j] == y_p[z] || y_p[z] == y_p[i]))
+                    answer = max(GetMax(i, j, z), answer);
             }
         }
     }
-    
-    printf("%d", maxarea);
-    return 0;
-}
 
-int farea(int i, int j, int k) {
-    return abs((A[i] * B[j] + A[j] * B[k] + A[k] * B[i]) -
-               (A[j] * B[i] + A[k] * B[j] + A[i] * B[k]));
+    cout << answer;
+    return 0;
 }
