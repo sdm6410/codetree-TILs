@@ -26,6 +26,7 @@ int main() {
         {
             for(int z = j + 1; z < n; z++)
             {
+                if(x_p[i] == x_p[j] || x_p[j] == x_p[z] || x_p[z] == x_p[i] || y_p[i] == y_p[j] || y_p[j] == y_p[z] || y_p[z] == y_p[i])
                 answer = max(GetMax(i, j, z), answer);
             }
         }
