@@ -1,5 +1,6 @@
 #include <iostream>
 #include <algorithm>
+#include <climits>
 using namespace std;
 #define MAX_N 10000010
 int n;
@@ -19,7 +20,7 @@ int main() {
         x_p[i] = x;
         y_p[i] = y;
     }
-    int answer = 0;
+    int answer = INT_MIN;
     for(int i = 0; i < n; i++)
     {
         for(int j = i + 1; j < n; j++)
@@ -28,6 +29,7 @@ int main() {
             {
                 if((x_p[i] == x_p[j] || x_p[j] == x_p[z] || x_p[z] == x_p[i]) && (y_p[i] == y_p[j] || y_p[j] == y_p[z] || y_p[z] == y_p[i]))
                     continue;
+
                 answer = max(GetMax(i, j, z), answer);
             }
         }
