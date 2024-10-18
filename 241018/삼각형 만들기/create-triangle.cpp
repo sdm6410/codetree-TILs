@@ -7,15 +7,7 @@ int x_p[MAX_N], y_p[MAX_N];
 
 int GetMax(int i1, int i2, int i3)
 {
-    int area;
-    for(int i = 0; i < n; i++)
-    {
-        if(i == i1 || i == i2 || i == i3)
-            continue;
-        area = abs((x_p[i1] * y_p[i2] + x_p[i2] * y_p[i3] + x_p[i3] * y_p[i1]) - (x_p[i2] * y_p[i1] + x_p[i3] * y_p[i2] + x_p[i1] * y_p[i3]));
-    }
-
-    return area;
+    return abs((x_p[i1] * y_p[i2] + x_p[i2] * y_p[i3] + x_p[i3] * y_p[i1]) - (x_p[i2] * y_p[i1] + x_p[i3] * y_p[i2] + x_p[i1] * y_p[i3]));
 }
 
 int main() {
