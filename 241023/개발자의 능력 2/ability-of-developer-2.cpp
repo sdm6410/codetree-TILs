@@ -11,7 +11,7 @@ int main() {
     sort(arr, arr + 6);
 
     int max_ = 0;
-    int min_ = 1000000;
+    int min_ = 886606;
     for(int i = 0; i < 3; i++)
     {
         int num = arr[i] + arr[5 - i];
