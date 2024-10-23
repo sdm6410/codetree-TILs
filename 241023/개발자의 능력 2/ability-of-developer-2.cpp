@@ -1,5 +1,6 @@
 #include <iostream>
 #include<algorithm>
+#include <climits>
 using namespace std;
 
 int main() {
@@ -11,7 +12,7 @@ int main() {
     sort(arr, arr + 6);
 
     int max_ = 0;
-    int min_ = 886606;
+    int min_ = INT_MAX;
     for(int i = 0; i < 3; i++)
     {
         int num = arr[i] + arr[5 - i];
