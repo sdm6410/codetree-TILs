@@ -9,15 +9,17 @@ int main() {
     for(int i = x; i <= y; i++)
     {
         int sum = 0;
+        int num = i;
         while(true)
         {
-            if(x < 1)
+            if(num < 1)
             {
                 break;
             }
-            sum += x % 10;
-            x /= 10;
+            sum += num % 10;
+            num /= 10;
         }
+
 
         max_ = max(max_, sum);
     }
