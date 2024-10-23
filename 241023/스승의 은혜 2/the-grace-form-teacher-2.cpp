@@ -16,7 +16,7 @@ int main() {
     int cnt = 0;
     for(int i = 0; i < n; i++)
     {
-        if(b < 0)
+        if(b <= 0)
             break;
         b -= arr[i];
         cnt++;
