@@ -16,11 +16,22 @@ int main() {
     int cnt = 0;
     for(int i = 0; i < n; i++)
     {
-
         b -= arr[i];
-        if(b < 0)
-            break;
-        cnt++;
+        if(b >= 0)
+        {
+            cnt++;
+            continue;
+        }
+        else
+        {
+            b += arr[i];
+            int sale = arr[i] / 2;
+            if(b - sale >= 0)
+            {
+                cnt++;
+                break;
+            }
+        }
     }
 
     cout << cnt;
