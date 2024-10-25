@@ -14,7 +14,7 @@ int main() {
 
     for(int i = 0; i < n; i++)
     {
-        for(int j = 0; j < k; j++)
+        for(int j = i; j < i + k + 1; j++)
         {
             if(i == j)
                 continue;
