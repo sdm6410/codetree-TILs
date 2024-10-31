@@ -15,7 +15,7 @@ int main() {
     {
         int cnt = 0;
         bool coin[4] = {0};
-        coin[start - 1] = true;
+        coin[start] = true;
         for(int i = 0; i < n; i++)
         {
             if(coin[a[i]] != coin[b[i]])
