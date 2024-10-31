@@ -9,12 +9,12 @@ int main() {
     {
         cin >> a[i] >> b[i] >> c[i];
     }
-    
+
     int max_cnt = 0;
     for(int start = 1; start <= 3; start++)
     {
         int cnt = 0;
-        bool coin[3] = {0};
+        bool coin[4] = {0};
         coin[start - 1] = true;
         for(int i = 0; i < n; i++)
         {
