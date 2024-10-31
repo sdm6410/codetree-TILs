@@ -1,71 +1,45 @@
 #include <iostream>
-#include <vector>
-#include <string>
-#include <cmath>
+#include <algorithm>
 #include <climits>
+
+#define MAX_T 100
 using namespace std;
 
 int t, a, b;
-vector<string> linear(1001, "0");
+int s[MAX_T], n[MAX_T];
+int cnt_s, cnt_n;
 
-int get_most_close_s(int idx) {
-    vector<int> s_idx_list;
-
-    for (int i = 0; i < 1001; i++) {
-        if (linear[i] == "S") {
-            s_idx_list.push_back(i);
-        }
-    }
-
-    int min_dist = INT_MAX;
-
-    for (int s_idx : s_idx_list) {
-        min_dist = min(min_dist, abs(s_idx - idx));
-    }
-
-    return min_dist;
-}
-
-int get_most_close_n(int idx) {
-    vector<int> n_idx_list;
-
-    for (int i = 0; i < 1001; i++) {
-        if (linear[i] == "N") {
-            n_idx_list.push_back(i);
-        }
-    }
-
-    int min_dist = INT_MAX;
-
-    for (int n_idx : n_idx_list) {
-        min_dist = min(min_dist, abs(n_idx - idx));
-    }
-
-    return min_dist;
-}
-
-int main() {
+int main()
+{
     cin >> t >> a >> b;
 
-    for (int i = 0; i < t; i++) {
-        string c;
-        int x;
-        cin >> c >> x;
-        linear[x] = c;
+    for(int i = 0; i < t; i++)
+    {
+        char x;
+        int y;
+        cin >> x >> y;
+        if(x == 'S')
+            s[cnt_s++] = y;
+        else
+            n[cnt_n++] = y;
     }
 
-    int special_pos_cnt = 0;
+    int ans = 0;
 
-    for (int i = a; i <= b; i++) {
-        int d1 = get_most_close_s(i);
-        int d2 = get_most_close_n(i);
+    for(int i = a; i <= b; i++)
+    {
+        int dis_s = INT_MAX;
+        int dis_n = INT_MAX;
 
-        if (d1 <= d2) {
-            special_pos_cnt++;
-        }
+        for(int j = 0; j < cnt_s; j++)
+            dis_s = min(dis_s, abs(s[j] - i));
+        for(int j = 0; j < cnt_n; j++)
+            dis_n = min(dis_n, abs(n[j] - i));
+
+        if(dis_s <= dis_n)
+            ans++;
     }
 
-    cout << special_pos_cnt << endl;
-
+    cout << ans;
     return 0;
 }
