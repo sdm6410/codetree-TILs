@@ -9,7 +9,7 @@ bool findPoint(int x, int y, int z)
     int cnt = 0;
     for(int i = 0; i < n; i++)
     {
-        if(arr_x[i] == x || arr_y[i] == y || arr_x[i] == z || arr_y[i] == z)
+        if(arr_x[i] == x || arr_y[i] == x || arr_x[i] == y || arr_y[i] == y || arr_x[i] == z || arr_y[i] == z)
         {
             cnt++;
         }
@@ -31,7 +31,7 @@ int main() {
     {
         for(int j = 0; j <= 10; j++)
         {
-            for(int z = j+1; z<= 10; z++)
+            for(int z = 0; z <= 10; z++)
             {
                 if(findPoint(i, j, z))
                     ans = 1;
