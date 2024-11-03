@@ -1,23 +1,21 @@
 #include <iostream>
-#include <climits>
+#include <algorithm>
+
 using namespace std;
 
 int a, b, c;
-
-int main() {
+int main()
+{
     cin >> a >> b >> c;
-    int max_value = INT_MIN;
-    for(int i = 0; i <= 1000; i++)
+    int ans = 0;
+    for(int i = 0; i * a <= c; i++)
     {
-        for(int j = 0; j <= 1000; j++)
-        {
-            int value = a * i + b * j;
-            if(c >= value)
-                max_value = max(max_value, value);
-            else
-                break;                     
-        }
+        int cnt = a * i;
+        int num_b = (c - cnt) / b;
+        cnt += num_b * b;
+        ans = max(ans, cnt);
     }
-    cout << max_value;
+
+    cout << ans;
     return 0;
 }
